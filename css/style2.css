@@ -753,7 +753,7 @@ body {
 
   /* Move image above everything */
   .hero-right {
-    order: -2 !important;
+    order: -3 !important;
     margin-bottom: 1.5rem;
   }
 

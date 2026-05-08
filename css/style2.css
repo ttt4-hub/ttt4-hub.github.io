@@ -34,20 +34,6 @@ body {
 }
 
 
-@media (max-width: 768px) {
-  .skills-column {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
-
-  .skill-bar {
-    margin-bottom: 1rem;
-  }
-
-  .percent {
-    font-size: 0.9rem;
-  }
-}
 
 
 
@@ -684,4 +670,44 @@ body {
 
 .section-divider.visible {
     transform: scaleX(1);
+}
+/* Mobile layout */
+@media (max-width: 768px) {
+
+  body {
+    padding: 0 1rem;
+  }
+
+  .container,
+  .section,
+  .skills-column,
+  .about-content,
+  .projects-grid {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+  .skills-columns {
+    display: block;
+  }
+
+  .skills-column {
+    margin-bottom: 2rem;
+  }
+
+  .project-card {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.4rem;
+  }
 }

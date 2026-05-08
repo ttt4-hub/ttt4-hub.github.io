@@ -27,6 +27,30 @@ body {
     color: var(--text-color);
 }
 
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+@media (max-width: 768px) {
+  .skills-column {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .skill-bar {
+    margin-bottom: 1rem;
+  }
+
+  .percent {
+    font-size: 0.9rem;
+  }
+}
+
+
+
 /* ====== NAVBAR ====== */
 .navbar {
     position: fixed;

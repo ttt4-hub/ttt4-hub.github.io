@@ -744,35 +744,25 @@ body {
     margin: 0 auto 1.5rem auto;
   }
 }
-/* --- MOBILE FIX (NO LAYOUT CHANGE) --- */
+/* --- MOBILE HERO FIX --- */
 @media (max-width: 768px) {
-
-  /* EDUCATION — keep same design, just stack */
-  .education-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
+  .hero {
+    flex-direction: column !important; /* stack vertically, image first */
+    text-align: center;
   }
 
-  /* SKILLS — keep same design, just stack */
-  .skills-layout {
-    grid-template-columns: 1fr !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    gap: 1.5rem !important;
+  .hero-right {
+    order: -1; /* move image above text */
+    margin-bottom: 1.5rem;
   }
 
-  /* PROJECTS — keep same design, just stack */
-  .projects-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
+  .hero-content {
+    order: 2;
   }
 
-  /* Make cards fit full width */
-  .edu-card,
-  .skills-column,
-  .core-skiild-card,
-  .TechnicalSkills-card,
-  .project-card {
-    width: 100% !important;
+  .hero-image {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
   }
 }

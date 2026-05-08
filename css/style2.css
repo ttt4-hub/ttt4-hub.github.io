@@ -744,3 +744,35 @@ body {
     margin: 0 auto 1.5rem auto;
   }
 }
+/* --- MOBILE FIX (NO LAYOUT CHANGE) --- */
+@media (max-width: 768px) {
+
+  /* EDUCATION — keep same design, just stack */
+  .education-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* SKILLS — keep same design, just stack */
+  .skills-layout {
+    grid-template-columns: 1fr !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    gap: 1.5rem !important;
+  }
+
+  /* PROJECTS — keep same design, just stack */
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Make cards fit full width */
+  .edu-card,
+  .skills-column,
+  .core-skiild-card,
+  .TechnicalSkills-card,
+  .project-card {
+    width: 100% !important;
+  }
+}

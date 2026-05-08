@@ -744,10 +744,10 @@ body {
     margin: 0 auto 1.5rem auto;
   }
 }
-/* --- FINAL HERO FIX (OVERRIDES EVERYTHING) --- */
+/* --- FINAL FIX: FORCE HERO TO FLEX ON MOBILE --- */
 @media (max-width: 768px) {
 
-  /* Force hero to be flex again */
+  /* FORCE hero to be flex again */
   .hero {
     display: flex !important;
     flex-direction: column !important;
@@ -756,7 +756,7 @@ body {
     text-align: center !important;
   }
 
-  /* Move image ABOVE text + button */
+  /* MOVE IMAGE ABOVE TEXT */
   .hero-right {
     order: -1 !important;
     width: 100% !important;
@@ -765,13 +765,13 @@ body {
     margin-bottom: 1.5rem !important;
   }
 
-  /* Keep text + button below */
+  /* TEXT BELOW IMAGE */
   .hero-content {
     order: 2 !important;
     width: 100% !important;
   }
 
-  /* Make image centered and sized correctly */
+  /* IMAGE SIZE + CENTER */
   .hero-image {
     width: 220px !important;
     height: 220px !important;

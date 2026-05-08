@@ -671,11 +671,30 @@ body {
 .section-divider.visible {
     transform: scaleX(1);
 }
-/* Mobile Fix for Education + Skills */
+/* --- MOBILE FIX --- */
 @media (max-width: 768px) {
 
+  /* General layout */
+  body {
+    padding: 0 1rem;
+    overflow-x: hidden;
+  }
+
+  /* Education section */
+  .education-container,
+  .education-cards {
+    display: block !important;
+    width: 100%;
+  }
+
+  .education-card {
+    width: 100% !important;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Skills section */
   .skills-layout {
-    display: block;
+    display: block !important;
     width: 100%;
   }
 
@@ -684,22 +703,39 @@ body {
     margin-bottom: 2rem;
   }
 
-  .core_skiild-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem;
-  }
-
-  .core-skiild-card,
-  .TechnicalSkills-card {
+  .skill-bar {
     width: 100% !important;
-    min-height: auto;
   }
 
   .skill-tags {
-    gap: 0.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
-  .skill-bars {
-    margin-top: 1rem;
+  /* Projects section */
+  .projects-grid {
+    display: block !important;
+    width: 100%;
+  }
+
+  .project-card {
+    width: 100% !important;
+    margin-bottom: 2rem;
+  }
+
+  /* Text scaling */
+  h1, h2, h3 {
+    font-size: 1.4rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Buttons */
+  button, .btn {
+    width: 100%;
+    text-align: center;
   }
 }

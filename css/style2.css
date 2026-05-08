@@ -744,25 +744,29 @@ body {
     margin: 0 auto 1.5rem auto;
   }
 }
-/* --- MOBILE HERO FIX --- */
+/* --- MOBILE HERO IMAGE POSITION FIX --- */
 @media (max-width: 768px) {
   .hero {
-    flex-direction: column !important; /* stack vertically, image first */
+    flex-direction: column !important;
     text-align: center;
   }
 
+  /* Move image above everything */
   .hero-right {
-    order: -1; /* move image above text */
+    order: -2 !important;
     margin-bottom: 1.5rem;
   }
 
+  /* Keep text and button below */
   .hero-content {
-    order: 2;
+    order: 2 !important;
   }
 
+  /* Center and resize image */
   .hero-image {
     width: 220px;
     height: 220px;
     margin: 0 auto;
+    border-radius: 20%;
   }
 }

@@ -744,31 +744,31 @@ body {
     margin: 0 auto 1.5rem auto;
   }
 }
-/* --- MOBILE FIX FOR INFO BOXES --- */
 @media (max-width: 768px) {
   .hero-info {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 1rem !important;
-    margin-top: 1.5rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem; /* space between boxes */
   }
 
   .info-item {
-    width: 90% !important;
-    max-width: 320px !important;
-    text-align: center !important;
-    padding: 1rem 1.5rem !important;
-    border-radius: 20px !important;
-  }
-
-  .info-detail {
-    font-size: 0.9rem !important;
-    line-height: 1.4 !important;
+    width: 90%; /* box width relative to screen */
+    max-width: 320px;
+    padding: 1rem 1.5rem;
+    border-radius: 25px; /* roundness */
+    text-align: center;
   }
 
   .info-label {
-    font-size: 1rem !important;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .info-detail {
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
 }
+
 

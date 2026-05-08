@@ -671,43 +671,35 @@ body {
 .section-divider.visible {
     transform: scaleX(1);
 }
-/* Mobile layout */
+/* Mobile Fix for Education + Skills */
 @media (max-width: 768px) {
 
-  body {
-    padding: 0 1rem;
-  }
-
-  .container,
-  .section,
-  .skills-column,
-  .about-content,
-  .projects-grid {
+  .skills-layout {
+    display: block;
     width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    display: block;
-  }
-
-  .skills-columns {
-    display: block;
   }
 
   .skills-column {
+    width: 100% !important;
     margin-bottom: 2rem;
   }
 
-  .project-card {
-    width: 100%;
+  .core_skiild-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
   }
 
-  img {
-    max-width: 100%;
-    height: auto;
+  .core-skiild-card,
+  .TechnicalSkills-card {
+    width: 100% !important;
+    min-height: auto;
   }
 
-  h1, h2, h3 {
-    font-size: 1.4rem;
+  .skill-tags {
+    gap: 0.6rem;
+  }
+
+  .skill-bars {
+    margin-top: 1rem;
   }
 }

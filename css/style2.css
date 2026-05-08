@@ -744,7 +744,7 @@ body {
     margin: 0 auto 1.5rem auto;
   }
 }
-/* --- FINAL FIX FOR HERO IMAGE POSITION --- */
+/* --- FINAL HERO FIX (OVERRIDES EVERYTHING) --- */
 @media (max-width: 768px) {
 
   /* Force hero to be flex again */
@@ -752,6 +752,7 @@ body {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
+    justify-content: flex-start !important;
     text-align: center !important;
   }
 
@@ -777,3 +778,4 @@ body {
     margin: 0 auto !important;
   }
 }
+

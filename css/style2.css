@@ -753,16 +753,16 @@ body {
   }
 
   .info-item {
-    width: 90%; /* box width relative to screen */
+    width: 40%; /* box width relative to screen */
     max-width: 320px;
-    padding: 1rem 1.5rem;
+    padding: 0rem 0.5rem;
     border-radius: 25px; /* roundness */
     text-align: center;
   }
 
   .info-label {
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 300;
   }
 
   .info-detail {

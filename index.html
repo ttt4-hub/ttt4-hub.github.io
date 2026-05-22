@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talh Hossin – AI Specialist Portfolio</title>
+    
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,6 +19,9 @@
 
 </head>
 <body>
+
+
+  
 
 
     <!-- navbar -->
@@ -41,6 +45,8 @@
         <div class="hero-content">
             <p class="hero-top">AI Specialist</p>
             <h1><span class="highlight"> Talh Hossin</span></h1>
+            <span id="ai-roles"></span>
+
 
             <p class="hero-intro">
                 I am a Junior Computer Science student with a strong focus on machine learning, neural networks, and software engineering. 
@@ -696,20 +702,22 @@ activities, and student support initiatives.</p>
     </section>
 
     <div class="section-divider"></div>
+<!-- FOOTER -->
+<footer class="footer">
+    © 2026 Talh Hossin. All rights reserved.
+</footer>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        © 2026 Talh Hossin. All rights reserved.
-    </footer>
+<!-- JS -->
+<script src="js/script.js"></script>
 
-    <!-- JS -->
-    <script src="js/script.js"></script>
-    <script>
+<script>
+// =========================
+// SKILLS ANIMATION (YOURS)
+// =========================
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
 
-      // Animate the bar fill (the line)
       entry.target.querySelectorAll('.fill').forEach(bar => {
         const width = bar.getAttribute('data-width');
         bar.style.transition = "none";
@@ -721,7 +729,6 @@ const observer = new IntersectionObserver(entries => {
         }, 100);
       });
 
-      // Animate the percentage numbers
       entry.target.querySelectorAll('.percent').forEach(percent => {
         const target = parseInt(percent.textContent);
         percent.textContent = "0%";
@@ -746,78 +753,151 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.skills-column').forEach(section => {
   observer.observe(section);
 });
-window.addEventListener('scroll', () => {
-  const timeline = document.querySelector('.pro-timeline');
-  const rect = timeline.getBoundingClientRect();
-  const windowHeight = window.innerHeight;
 
-  const progress = Math.min(
-    Math.max((windowHeight - rect.top) / (rect.height + windowHeight), 0),
-    1
-  );
 
-  if (progress > 0.05) {
-    timeline.classList.add('active');
-  } else {
-    timeline.classList.remove('active');
-  }
-});
-window.addEventListener('scroll', () => {
-  document.querySelectorAll('.pro-year').forEach(year => {
-    const rect = year.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
-      year.style.opacity = '1';
-      year.style.transform = 'translateY(0)';
-    } else {
-      year.style.opacity = '0';
-      year.style.transform = 'translateY(10px)';
-    }
-  });
-});
-window.addEventListener('scroll', () => {
-  document.querySelectorAll('.pro-year').forEach(year => {
-    const rect = year.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
-      year.style.opacity = '1';
-      year.style.transform = 'translateY(0)';
-    } else {
-      year.style.opacity = '0';
-      year.style.transform = 'translateY(10px)';
-    }
-  });
-});
-
+// =========================
+// TIMELINE ANIMATION
+// =========================
 const timelineItems = document.querySelectorAll('.pro-timeline');
 
 window.addEventListener('scroll', () => {
   timelineItems.forEach(item => {
     const rect = item.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 150) {
+
+    if (rect.top < window.innerHeight - 50 && rect.bottom > 50) {
       item.classList.add('active');
     } else {
       item.classList.remove('active');
     }
   });
 });
-const items = document.querySelectorAll('.pro-timeline');
 
+
+// =========================
+// YEAR ANIMATION
+// =========================
 window.addEventListener('scroll', () => {
-  items.forEach(item => {
-    const rect = item.getBoundingClientRect();
+  document.querySelectorAll('.pro-year').forEach(year => {
+    const rect = year.getBoundingClientRect();
 
-    // When item is inside viewport → fade in + move up
-    if (rect.top < window.innerHeight - 50 && rect.bottom > 50) {
-      item.classList.add('active');
-    } 
-    // When item leaves viewport → fade out + move down
-    else {
-      item.classList.remove('active');
+    if (rect.top < window.innerHeight - 100) {
+      year.style.opacity = '1';
+      year.style.transform = 'translateY(0)';
+    } else {
+      year.style.opacity = '0';
+      year.style.transform = 'translateY(10px)';
     }
   });
 });
 
+
+// =========================
+// ROLES ANIMATION
+// =========================
+const roles = [
+  "AI Systems Architect",
+  "Machine Learning Builder",
+  "Cyber Innovator",
+  "Predictive Systems Engineer",
+  "EDA & Data Integrity Lead",
+  "Software Engineer",
+  "Data Science Specialist",
+  "Web Developer"
+];
+
+let i = 0;
+const span = document.getElementById("ai-roles");
+
+function typeRole() {
+  span.textContent = roles[i];
+  span.style.color = "#48182F";
+  span.style.fontWeight = "600";
+  span.style.transition = "opacity 0.6s ease";
+  span.style.opacity = "1";
+
+  setTimeout(() => {
+    span.style.opacity = "0";
+    i = (i + 1) % roles.length;
+    setTimeout(typeRole, 600);
+  }, 2500);
+}
+typeRole();
+
+
+// =========================
+
+
+
+
+// =========================
+// SPOTLIGHT
+// =========================
+document.addEventListener("mousemove", e => {
+  const s = document.getElementById("spotlight");
+  s.style.transform = `translate(${e.clientX - 150}px, ${e.clientY - 150}px)`;
+});
+
+
+// =========================
+// HERO IMAGE 3D TILT
+// =========================
+const img = document.querySelector(".hero-image");
+img.addEventListener("mousemove", e => {
+  const rect = img.getBoundingClientRect();
+  const x = e.clientX - rect.left - rect.width/2;
+  const y = e.clientY - rect.top - rect.height/2;
+  img.style.transform = `rotateX(${ -y/20 }deg) rotateY(${ x/20 }deg)`;
+});
+img.addEventListener("mouseleave", () => {
+  img.style.transform = "rotateX(0) rotateY(0)";
+});
+
+
+// =========================
+// REACTIVE BACKGROUND
+// =========================
+const canvas = document.getElementById("reactive-bg");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+let mouse = { x: 0, y: 0 };
+document.addEventListener("mousemove", e => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+let scrollY = 0;
+window.addEventListener("scroll", () => {
+  scrollY = window.scrollY;
+});
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const gradient = ctx.createRadialGradient(
+    mouse.x, mouse.y, 80,
+    canvas.width / 2, canvas.height / 2, canvas.width
+  );
+
+  gradient.addColorStop(0, `rgba(212,203,196,0.35)`);
+  gradient.addColorStop(1, `rgba(72,24,47,${0.2 + scrollY / 3000})`);
+
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  requestAnimationFrame(draw);
+}
+draw();
 </script>
 
+
+  <div id="particles"></div>
 
 </body>
 </html>

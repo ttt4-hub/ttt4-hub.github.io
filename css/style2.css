@@ -10,6 +10,8 @@
     
 }
 
+
+
 /* ====== RESET ====== */
 * {
     margin: 0;
@@ -23,7 +25,7 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: var(--bg-color);
+    background: #F7F3F8; /* soft light moonshell */
     color: var(--text-color);
 }
 
@@ -173,18 +175,22 @@ body {
 
 .hero-info {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 220px));
+    
+    gap: 0rem;
+    
+    margin-bottom: 2rem;
     align-items: stretch;   /* NEW */
 }
 
 .info-item {
     background: var(--secondary-color);
-    padding: 1rem 2.5rem;
-    border-radius: 30px;
+    padding: 0.2rem 1.90rem;
+    border-radius: 70px;
     transition: transform 0.5s ease;
-    height: 100%;           /* NEW */
+    height: 96%;  
+    width: 160px; /* or any value you want */
+         /* NEW */
 }
 
 
@@ -196,31 +202,31 @@ body {
 .info-line {
     display: flex;
     flex-direction: column;      /* stack title + detail vertically */
-    gap: 4px;
+    gap: 2px;
 }
 
 .info-title {
     display: flex;
     align-items: center;
-    gap: 6px;                    /* icon + title spacing */
+    gap: 5px;                    /* icon + title spacing */
 }
 
 /* Title */
 .info-label {
-    font-size: 0.95rem;
+    font-size: 0.75rem;
     font-weight: 700;
     color: var(--primary-color);
 }
 
 /* Detail text */
 .info-detail {
-    font-size: 0.80rem;
+    font-size: 0.60rem;
     color: var(--text-light);
 }
 
 /* Icon */
 .info-title i {
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     color: rgb(72, 24, 47);
 }
 
@@ -237,6 +243,8 @@ body {
     overflow: hidden;
     border: 5px solid var(--primary-color);
     box-shadow: var(--shadow);
+     transform-style: preserve-3d;
+  transition: transform 0.2s ease;
 }
 
 .hero-image img {
@@ -248,7 +256,7 @@ body {
 /* ====== BUTTONS ====== */
 .btn {
     display: inline-block;
-    padding: 0.9rem 2.2rem;
+    padding: 0.6rem 1.2rem;
     border-radius: 999px;
     font-weight: 600;
     text-decoration: none;
@@ -318,6 +326,9 @@ body {
     margin: 3rem auto;
     padding-left: 3rem;
     max-width: 850px;
+     opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
 /* The vertical line */
@@ -400,7 +411,7 @@ body {
 
 .pro-content {
     background: rgba(255,255,255,0.25);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(6px);
     border: 1px solid color-mix(in srgb, var(--primary-color) 40%, transparent); /* light outline */
     border-left: 5px solid var(--primary-color);
     border-radius: 14px;
@@ -409,9 +420,12 @@ body {
     color: var(--primary-color); /* or use var(--primary-color), var(--secondary-color) */
     font-size: 0.2rem
     
+    
+    
 
 .pro-year {
-    color: var(--secondary-color); /* MoonShell for year */
+    color: var(--secondary-color);
+    position: relative; /* Adds the ability to use 'left' */
     left: 30px;
 }
 
@@ -425,13 +439,15 @@ body {
 
     /* Soft Blackberry shadow */
     box-shadow: 0 0 20px color-mix(in srgb, var(--primary-color) 35%, transparent);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition: transform 0.65s ease, box-shadow 1.35s ease;
 }
 
 /* Hover effect — stronger Blackberry glow */
 .pro-content:hover {
-    box-shadow: 0 0 30px color-mix(in srgb, var(--primary-color) 55%, transparent);
-    transform: translateY(-3px);
+    box-shadow: 0 0 10px color-mix(in srgb, var(--primary-color) 20%, transparent);
+
+    transform: translateY(-6px);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.18);
 }
 
 
@@ -459,7 +475,7 @@ body {
     box-shadow: 0 0 10px color-mix(in srgb, var(--primary-color) 25%, transparent);
     opacity: 0; /* start hidden for fade animation */
     transform: translateY(10px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition: opacity 1.8s ease, transform 1.8s ease;
 }
 
 
@@ -475,6 +491,9 @@ body {
     left: 22px; /* aligns with your line */
     width: 34;
     height: 34;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 1.2s ease, transform 1.2s ease;
 
     /* Create a small downward arrow using borders */
     border-left: 10px solid transparent;
@@ -484,7 +503,7 @@ body {
 .pro-timeline::after {
     opacity: 0;
     transform: translateY(10px);
-    transition: opacity 1.8s ease, transform 1.8s ease;
+    transition: opacity 0ms ease, transform 0.8s ease;
 }
 
 .pro-timeline.active::after {
@@ -493,8 +512,8 @@ body {
 }
 .pro-timeline {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 2.8s ease, transform 2.8s ease;
+    transform: translateY(25px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
 }
 
 .pro-timeline.active {
@@ -1000,7 +1019,7 @@ body {
   }
 
   .hero-image {
-    width: 220px !important;
+    width: 96% !important;
     height: 220px !important;
     margin: 0 auto !important;
   }
@@ -1118,4 +1137,196 @@ body {
     justify-content: center;
 }
 
+}
+
+/* ====== MODERN HOMEPAGE EFFECTS ====== */
+
+/* Smooth fade‑in for hero section */
+.hero {
+  animation: heroFade 1.8s ease forwards;
+  opacity: 0;
+}
+@keyframes heroFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating glow for info boxes */
+.info-item {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+.info-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.25), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.info-item:hover::before {
+  opacity: 1;
+}
+.info-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 22px rgba(72,24,47,0.25);
+}
+
+/* Animated gradient underline for your name */
+.hero h1 {
+  position: relative;
+  display: inline-block;
+}
+.hero h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  animation: underlineGrow 2.2s ease forwards;
+}
+@keyframes underlineGrow {
+  to { width: 100%; }
+}
+
+/* Subtle parallax background */
+body {
+  background: linear-gradient(180deg, #fff 0%, #f9f7f6 100%);
+  background-attachment: fixed;
+}
+
+/* Soft glow around portrait */
+.hero-image {
+  box-shadow: 0 0 25px rgba(72,24,47,0.25);
+  transition: box-shadow 0.8s ease;
+}
+.hero-image:hover {
+  box-shadow: 0 0 45px rgba(72,24,47,0.45);
+}
+
+
+@keyframes floatUp {
+  from { transform: translateY(100vh) scale(0.6); }
+  to   { transform: translateY(-10vh) scale(1); }
+}
+#spotlight {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  z-index: 2;
+  transition: transform 0.15s ease;
+}
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  animation: pulse 1.8s infinite ease-in-out;
+}
+@keyframes pulse {
+  0% { opacity: 0.2; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(6px); }
+  100% { opacity: 0.2; transform: translateY(0); }
+}
+/* Luxury gradient glow */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+      circle at 20% 30%,
+      rgba(212,203,196,0.35),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(72,24,47,0.25),
+      transparent 20%
+    );
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(20px);
+}
+
+.hero h1 {
+  background: linear-gradient(90deg, #48182F, #D4CBC4, #48182F);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: shimmer 6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 30%; }
+  50% { background-position: 100%; }
+  100% { background-position: 0%; }
+}
+
+/* Timeline item subtle 3D hover */
+.pro-item {
+  transition: transform 0.5s ease;
+}
+.pro-item:hover {
+  transform: translateX(6px);
+}
+/* Micro animations */
+.nav-links a {
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+.nav-links a:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: translateX(0);
+  transition: transform 0.5s ease;
+}
+.btn-primary:hover::after {
+  transform: translateX(260%);
+}
+#reactive-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: red; /* test */
+  animation: floatUp 12s linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(100vh); }
+  to   { transform: translateY(-10vh); }
 }

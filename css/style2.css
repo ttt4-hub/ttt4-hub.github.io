@@ -554,20 +554,7 @@ body {
   font-weight: 600;
 }
 
-/* GitHub link */
-.project-link {
-  color: var(--primary-color); /* Blackberry color */
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.project-link:hover {
-  color: var(--primary-color);
-  text-decoration: underline;
-  transform: translateY(-3px);
-}
-
-/* Grid positioning */
+/* --- GRID POSITIONING --- */
 .project-card:nth-child(1) {
   grid-column: 1;
   grid-row: 1;
@@ -584,6 +571,12 @@ body {
   grid-column: 1;
   grid-row: 2;
   justify-self: start;
+}
+
+.project-card:nth-child(4) {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: end;
 }
 
 #projects.section {
@@ -614,6 +607,7 @@ body {
     padding: 0.45rem 1rem;
   }
 }
+
 
 /* ====== CONTACT ====== */
 .contact-grid {

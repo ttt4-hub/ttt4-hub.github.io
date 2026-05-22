@@ -310,56 +310,259 @@ body {
     color: var(--primary-color);
 }
 
-/* ====== TIMELINE (ACCOMPLISHMENTS) ====== */
-.timeline {
+
+
+/*=======Timeline ==========*/
+.pro-timeline {
     position: relative;
-    margin-top: 1rem;
+    margin: 3rem auto;
+    padding-left: 3rem;
+    max-width: 850px;
 }
 
-.timeline::before {
-    content: '';
+/* The vertical line */
+/* TIMELINE CONTAINER */
+.pro-timeline {
+    position: relative;
+    margin: 3rem auto;
+    padding-left: 3rem;
+    max-width: 850px;
+}
+
+.pro-timeline::before {
+    content: "";
     position: absolute;
-    left: 18px;
+    left: 28px;
     top: 0;
     bottom: 0;
-    width: 2px;
-    background: var(--secondary-color);
+    width: 6px;
+
+ background: linear-gradient(
+    to bottom,
+    var(--primary-color),
+    var(--primary-color),
+    var(--secondary-color)
+);
+
+    border-radius: 3px;
+
+    /* Soft glow */
+    box-shadow: 0 0 18px rgba(201,182,228,0.5);
+
+    opacity: 1;
+    transition: box-shadow 0.4s ease;
 }
 
-.timeline-item {
+
+/* Active scroll state */
+.pro-timeline.active::before {
+    box-shadow: 0 0 25px rgba(201,182,228,0.7);
+    opacity: 1;
+}
+
+/* DOTS (YOUR COLORS + GLOW) */
+.pro-dot {
+    display: none;
+    position: absolute;
+    left: 22px;
+    width: 20px;
+    height: 20px;
+
+    background: radial-gradient(
+        circle at center,
+        var(--secondary-color) 10%,
+        var(--primary-color) 150%
+    );
+
+    border-radius: 50%;
+    z-index: 10;
+
+    box-shadow:
+        0 0 20px var(--secondary-color),
+        0 0 40px var(--primary-color);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* DOT HOVER */
+.pro-dot:hover {
+    transform: scale(1.25);
+    box-shadow:
+        0 0 30px var(--secondary-color),
+        0 0 60px var(--primary-color);
+}
+
+/* ITEM WRAPPER */
+.pro-item {
     position: relative;
-    padding-left: 50px;
     margin-bottom: 2rem;
 }
 
-.timeline-dot {
+.pro-content {
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid color-mix(in srgb, var(--primary-color) 40%, transparent); /* light outline */
+    border-left: 5px solid var(--primary-color);
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    margin-left: 1rem;
+    color: var(--primary-color); /* or use var(--primary-color), var(--secondary-color) */
+    font-size: 0.2rem
+    top:  rem
+
+.pro-year {
+    color: var(--secondary-color); /* MoonShell for year */
+    left: 30px;
+}
+
+.pro-content h3 {
+    color: var(--primary-color); /* Blackberry for title */
+}
+
+.pro-content p {
+    color: var(--secondary-color); /* neutral text color */
+}
+
+    /* Soft Blackberry shadow */
+    box-shadow: 0 0 20px color-mix(in srgb, var(--primary-color) 35%, transparent);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect — stronger Blackberry glow */
+.pro-content:hover {
+    box-shadow: 0 0 30px color-mix(in srgb, var(--primary-color) 55%, transparent);
+    transform: translateY(-3px);
+}
+
+
+
+/* CLICK = DARKER SHADOW */
+.pro-content:active {
+    transform: scale(0.98);
+    box-shadow: 4px 8px 20px rgba(0,0,0,0.35);
+}
+
+.pro-year {
     position: absolute;
-    left: 10px;
-    top: 4px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: var(--primary-color);
-    border: 3px solid #fff;
-    box-shadow: var(--shadow);
-}
-
-.timeline-content {
-    background: #fff;
-    padding: 1.2rem 1.4rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-}
-
-.timeline-content h3 {
-    margin-bottom: 0.3rem;
+    left: -65px; /* adjust horizontally to center above dot */
+    top: -15px;  /* move above the dot */
+    z-index: 22;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: color-mix(in srgb, var(--secondary-color) 20%, #d9d0cb);
     color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 6px 12px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px color-mix(in srgb, var(--primary-color) 25%, transparent);
+    opacity: 0; /* start hidden for fade animation */
+    transform: translateY(10px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.timeline-meta {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    margin-bottom: 0.5rem;
+
+/* Hover glow */
+.pro-year:hover {
+    box-shadow: 0 0 18px color-mix(in srgb, var(--primary-color) 45%, transparent);
+    transform: translateY(-2px);
+}
+.pro-timeline::after {
+    content: "";
+    position: absolute;
+    bottom: -9.30px; /* places arrow below the line */
+    left: 22px; /* aligns with your line */
+    width: 34;
+    height: 34;
+
+    /* Create a small downward arrow using borders */
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 16px solid var(--secondary-color); /* Blackberry arrow tip */
+}
+.pro-timeline::after {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 1.8s ease, transform 1.8s ease;
+}
+
+.pro-timeline.active::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+.pro-timeline {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 2.8s ease, transform 2.8s ease;
+}
+
+.pro-timeline.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+.pro-timeline::after {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 3.8s ease, transform 3.8s ease;
+}
+.pro-timeline {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.pro-timeline.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.pro-timeline.active::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+@media (max-width: 768px) {
+  .pro-content h3 {
+    font-size: 1rem;
+  }
+  .pro-content p {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+
+/*=======Certifications =====*/ 
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.cert-card {
+    background: var(--secondary-color); /* MoonShell */
+    padding: 1rem;
+    border-radius: 12px;
+    color: #4D0135; /* Blackberry */
+    box-shadow: 0 2px 6px rgba(77, 1, 53, 0.15);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cert-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(77, 1, 53, 0.25);
+}
+
+.cert-year {
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 0.4rem;
 }
 
 /* ====== SKILLS LAYOUT ====== */
@@ -488,6 +691,7 @@ body {
   to { width: var(--target-width); }
 }
 
+/*===================timeline*/
 
 /* ====== PROJECTS ====== */
 .projects-grid {
@@ -583,6 +787,36 @@ body {
   padding-left: 0;
   padding-right: 0;
 }
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+
+.project-date {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 4px 12px;
+    background-color: var(--secondary-color); /* pure MoonShell */
+    border: none; /* no border */
+    border-radius: 10px;
+    font-size: 0.82rem;
+    color: #4D0135; /* Blackberry for text/icon contrast */
+    transition: transform 0.25s ease;
+}
+
+.project-date i {
+    font-size: 0.9rem;
+    color: #4D0135; /* Blackberry icon */
+}
+
+.project-date:hover {
+    transform: translateY(-1px);
+}
+
 
 /* --- MOBILE FIX --- */
 @media (max-width: 768px) {

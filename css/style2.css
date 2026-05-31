@@ -165,32 +165,32 @@ body {
 }
 
 .hero-intro {
-    max-width: 1950px;
+    max-width: 600px; /* Forces the text to break into nice, readable paragraphs */
     line-height: 1.7;
     font-size: 1.05rem;
 }
+
 .hero {
     max-width: 5000px;
 }
 
 .hero-info {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 220px));
-    
-    gap: 0rem;
-    
+    display: flex;           /* Switched from grid to flex */
+    flex-wrap: nowrap;       /* STRICT RULE: Forces them to stay on one single line */
+    gap: 15px;               /* Adds a clean, even space between the 3 pills */
     margin-bottom: 2rem;
-    align-items: stretch;   /* NEW */
+    align-items: stretch;
 }
 
 .info-item {
     background: var(--secondary-color);
-    padding: 0.2rem 1.90rem;
+    padding: 0.6rem 1.5rem;  /* Adjusted padding so they look plump and premium */
     border-radius: 70px;
-    transition: transform 0.5s ease;
-    height: 96%;  
-    width: 160px; /* or any value you want */
-         /* NEW */
+    transition: transform 0.5s ease, box-shadow 0.6s ease;
+    
+    /* Removed your fixed width: 160px so they size themselves perfectly based on the text */
+    flex: 1 1 auto;          
+    white-space: nowrap;     /* Prevents the text inside from stacking awkwardly */
 }
 
 
@@ -554,50 +554,98 @@ body {
 
 
 
-/* ===== Certifications ===== */
-
-.cert-scroll {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 20px;
-  scroll-snap-type: none;
-  scrollbar-width: none;
+/* ===== CERTIFICATIONS SECTION ===== */
+#certifications {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 0rem;
+  overflow: hidden; /* keeps section still */
+ 
 }
 
+/* Scroll container */
+.cert-scroll {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  /* --- ADD YOUR GLOWING BRACKETS HERE --- */
+  border-left: 4px solid #48182F;
+  border-right: 4px solid #48182F;
+  border-radius: 20px; 
+  box-shadow: -10px 0 20px -10px rgba(72, 24, 47, 0.3), 
+               10px 0 20px -10px rgba(72, 24, 47, 0.3);
+               
+  /* Gives the certificates a little breathing room near the edges */
+  padding-left: 15px;
+  padding-right: 15px;
+}
 .cert-scroll::-webkit-scrollbar {
   display: none;
 }
 
+/* Certificate box */
 .cert-item {
   flex: 0 0 auto;
-  width: 260px;
-  height: 220px;
-  background: #fff;
-  border-radius: 12px;
-  scroll-snap-align: start;
-  box-shadow: var(--secondary-color);
-  text-align: center;
+  width: 360px;
+  height: 320px;
   padding: 10px;
-  padding-left: 10px;
-  padding-right: 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 4px solid var(--secondary-color);
+  box-sizing: border-box;
+  border: 3px solid var(--secondary-color);
+  background: linear-gradient(145deg, #ffffff, #f8f8f8);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+/* 1. Add this line to stop the stutter (Hardware Acceleration) */
+  will-change: transform, box-shadow; 
+  
+  /* 2. Change 0.6s to 0.2s to remove the "lag" delay */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-  /* CONTROL BORDER COLOR HERE */
 
+  
 }
 
 
+.cert-item:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 30px rgba(72, 24, 47, 0.25);
+}
 .cert-item img {
   width: 100%;
-  height: 140px;
+  height: 290px;
   object-fit: contain;
-  border-radius: 8px;
+  pointer-events: none; 
+  mix-blend-mode: multiply; /* Removes the harsh white box around the certs *//* Add this to let your mouse click "through" the image to drag the slider */
 }
+ 
+.cert-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* keeps image and title spaced nicely */
+  align-items: center; /* centers title horizontally */
+  text-align: center; /* centers text */
+}
+
+
+.cert-title {
+  font-size: 15px;
+  font-weight: 550;
+  color: #48182F;
+  margin-top: 10px;
+  padding: 0 10px; /* adds breathing room on sides */
+  line-height: 1.3; /* improves readability */
+  word-wrap: break-word; /* prevents overflow */
+  text-align: center;
+}
+
+
+
 
 /* ====== SKILLS LAYOUT ====== */
 .skills-layout {
@@ -1327,145 +1375,54 @@ body::before {
   z-index: -2;
 }
 
+
+/* ===== PARTICLES FIX ===== */
 #particles {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0; /* lower layer */
 }
 
 .particle {
   position: absolute;
-  font-size: 17px; /* tiny */
-  color: #48182F; /* primary color */
-  opacity: 0.35; /* soft */
+  font-size: 17px;
+  color: #48182F;
+  opacity: 0.35;
   animation: floatUp 16s linear infinite;
   user-select: none;
   pointer-events: none;
   white-space: nowrap;
 }
 
-
-
-
-
 @keyframes floatUp {
   from { transform: translateY(100vh); }
   to   { transform: translateY(-10vh); }
 }
-/* ===== CERTIFICATIONS SECTION ===== */
 
-#certifications {
-  width: 200vw !important;          /* full viewport width */
-  max-width: 100vw !important;      /* ensures no limit */
-  margin: 0 !important;             /* removes centering restriction */
-  padding-left: 20rem !important;   /* keep your left spacing */
-  padding-right: 20rem !important;  /* match right spacing */
-  box-sizing: border-box !important;
+/* Dim and blur all items when the container is hovered */
+.cert-scroll:hover .cert-item {
+  opacity: 0.3;
+  filter: blur(0.3px);
+  transform: scale(0.95);
+  transition: all 0.4s ease;
 }
 
-/* Scroll container */
-
-#certifications .cert-scroll {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 auto !important;
-  gap: 20px !important;
+/* Bring the specifically hovered item back to full focus */
+.cert-scroll .cert-item:hover {
+  opacity: 3;
+  filter: blur(0px);
+  transform: scale(1.05);
+  z-index: 10;
+  box-shadow: 0 5px 7px rgba(0,0,0,0.15);
+}
+/* Breathing Button Glow */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(72, 24, 47, 0.3); }
+  70% { box-shadow: 0 0 0 12px rgba(72, 24, 47, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(72, 24, 47, 0); }
 }
 
-
-
-
-
-#certifications .cert-scroll::-webkit-scrollbar {
-  display: none !important;
-}
-
-/* Certificate box */
-#certifications .cert-item {
-  flex: 0 0 auto !important;
-  width: 360px !important;
-  height: 320px !important;
-
-  margin: 0 !important;
-  padding: 10px !important;
-  box-sizing: border-box !important;
-
-  /* FINAL BORDER CONTROL — CHANGE COLOR HERE */
-  border: 3px solid var(--secondary-color) !important;
-
-  background: linear-gradient(145deg, #ffffff, #f8f8f8) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
-
-  transition: transform 0.8s ease, box-shadow 0.8s ease !important;
-}
-
-/* Hover effect */
-#certifications .cert-item:hover {
-  transform: translateY(-8px) scale(1.03) !important;
-}
-
-/* Certificate image */
-#certifications .cert-item img {
-  width: 100% !important;
-  height: 290px !important;
-  object-fit: contain !important;
-}
-
-/* Certificate title */
-.cert-title {
-  font-size: 15px !important;
-  font-weight: 550 !important;
-  color: #48182F !important;
-  margin-top: 8px !important;
-  letter-spacing: 0.3px !important;
-}
-
-/* Certifications section title */
-#certifications .section-title {
-  text-align: left !important;
-  margin-left: 300px !important;
-}
-
-#certifications .cert-scroll {
-  width: 50%;
-  max-width: 400px;          /* same as skills section */
-  margin: 0 auto !important;  /* centers horizontally */
-  padding-left: 2rem !important;  /* same as skills padding */
-  padding-right: 0rem !important;
-}
-
-#certifications .cert-item {
-  box-shadow: 0 0 20px rgba(72, 24, 47, 0.15);
-  transition: transform 0.6s ease, box-shadow 0.6s ease;
-}
-
-#certifications .cert-item:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 0 30px rgba(72, 24, 47, 0.25);
-}
-#certifications {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding-left: 2rem;
-  padding-right: 0rem;
-}
-
-/* ===== AUTO SCROLL ONLY CERTIFICATES ===== */
-@keyframes certAutoScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%); /* adjust based on total certificate width */
-  }
-}
-
-#certifications .cert-scroll {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow: hidden; /* keeps section still */
-  animation: certAutoScroll 30s linear infinite; /* speed control */
-  will-change: transform;
+.btn-primary {
+  animation: pulseGlow 2s infinite;
 }

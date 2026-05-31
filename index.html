@@ -19,6 +19,8 @@
 
 </head>
 <body>
+  <canvas id="reactive-bg"></canvas>
+  <div id="particles"></div>
 
 
   
@@ -212,31 +214,65 @@ activities, and student support initiatives.</p>
 </section>
 
 
-    <div class="section-divider"></div>
-<section id="certifications" class="section">
-    <h2 class="section-title">Certifications</h2>
+    <div class="section-divider">
 
-    <div class="cert-grid">
+    </div>
+    
+   <section id="certifications" class="section">
+  <h2 class="section-title">Certifications</h2>
 
-        <div class="cert-card">
-            <span class="cert-year">2025</span>
-            <p>Python for Data Science, AI & Development — IBM</p>
-        </div>
+  <div class="cert-scroll">
 
-        <div class="cert-card">
-            <span class="cert-year">2023</span>
-            <p>Digital Safety and Security</p>
-        </div>
+    <div class="cert-item">
+      <img src="images/certificates/Cer1.png" alt="Workplace Ethics Certificate">
+      <h3 class="cert-title">Workplace Ethics and Professionalism</h3>
+    </div>
 
-        <div class="cert-card">
-            <span class="cert-year">2025</span>
-            <p>Introduction to Artificial Intelligence (AI) — IBM</p>
-        </div>
+    <div class="cert-item">
+      <img src="images/certificates/cer2.png" alt="Certificate 2">
+      <h3 class="cert-title">Developing Interpersonal Skills</h3>
+    </div>
 
-        <div class="cert-card">
-            <span class="cert-year">2023</span>
-            <p>Python Data Structures</p>
-        </div>
+    <div class="cert-item">
+      <img src="images/certificates/cer3.png" alt="Certificate 3">
+      <h3 class="cert-title">Enterprenuership 1: Laying the foundation</h3>
+    </div>
+
+    <div class="cert-item">
+      <img src="images/certificates/cer4.png" alt="Certificate 5">
+      <h3 class="cert-title">Python for Data Science, AI & Development</h3>
+    </div>
+
+    <div class="cert-item">
+      <img src="images/certificates/cer5.png" alt="Certificate 6">
+      <h3 class="cert-title">Introduction to Artificial Intelligence</h3>
+    </div>
+
+        <div class="cert-item">
+      <img src="images/certificates/cer6.png" alt="Certificate 6">
+      <h3 class="cert-title">The Sustainable Development Goals</h3>
+    </div>
+
+        <div class="cert-item">
+      <img src="images/certificates/cer7.png" alt="Certificate 6">
+      <h3 class="cert-title">Digital Communication and Emotion</h3>
+    </div>
+
+        <div class="cert-item">
+      <img src="images/certificates/cer8.png" alt="Certificate 6">
+      <h3 class="cert-title">Digital Safety and Security</h3>
+    </div>
+
+            <div class="cert-item">
+      <img src="images/certificates/cer9.png" alt="Certificate 6">
+      <h3 class="cert-title">Python Data Structures</h3>
+    </div>
+
+            <div class="cert-item">
+      <img src="images/certificates/cer10.png" alt="Certificate 6">
+      <h3 class="cert-title">Programming for Everybody</h3>
+    </div>
+
 
     </div>
 </section>
@@ -885,8 +921,10 @@ function draw() {
     canvas.width / 2, canvas.height / 2, canvas.width
   );
 
-  gradient.addColorStop(0, `rgba(212,203,196,0.35)`);
-  gradient.addColorStop(1, `rgba(72,24,47,${0.2 + scrollY / 3000})`);
+ 
+ gradient.addColorStop(0, `rgba(255,255,255,1)`);   // pure white center
+gradient.addColorStop(1, `rgba(255,255,255,1)`);   // pure white edges
+
 
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -894,11 +932,74 @@ function draw() {
   requestAnimationFrame(draw);
 }
 draw();
+// =========================
+// PARTICLES (NEW CLEAN VERSION)
+// =========================
+// PARTICLES — clean rebuild
+const particlesContainer = document.getElementById("particles");
+
+const shapes = [
+  "0", "1",
+  "{", "}", "<", ">",
+  "=", "+", "-", "/",
+  ";", ":",
+  "py", "js", "C++", "AI",
+  "■"
+];
+
+for (let i = 0; i < 15; i++) {  // FEWER particles
+  const p = document.createElement("div");
+  p.classList.add("particle");
+
+  // random shape
+  p.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+
+  // random position + delay
+  p.style.left = Math.random() * 100 + "vw";
+  p.style.top = Math.random() * 100 + "vh";
+  p.style.animationDelay = Math.random() * 6 + "s";
+
+  particlesContainer.appendChild(p);
+}
+
+
+// =========================
+// FINAL CERTIFICATIONS AUTO SCROLL (SMOOTH + INFINITE)
+// =========================
+document.addEventListener("DOMContentLoaded", () => {
+  const certScroll = document.querySelector(".cert-scroll");
+  if (!certScroll) return;
+
+  let speed = 0.25;
+  let rafId;
+
+  function smoothLoop() {
+    certScroll.scrollLeft += speed;
+
+    if (certScroll.scrollLeft >= certScroll.scrollWidth - certScroll.clientWidth) {
+      certScroll.scrollLeft = 0;
+    }
+
+    rafId = requestAnimationFrame(smoothLoop);
+  }
+
+  smoothLoop();
+
+  certScroll.addEventListener("wheel", () => {
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(smoothLoop);
+  });
+
+  certScroll.addEventListener("touchmove", () => {
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(smoothLoop);
+  });
+});
+
+
+
+ 
 </script>
-
-
-  <div id="particles"></div>
-
 </body>
 </html>
 

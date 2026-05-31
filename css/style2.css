@@ -554,34 +554,49 @@ body {
 
 
 
+/* ===== Certifications ===== */
 
-/*=======Certifications =====*/ 
-.cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-top: 1.5rem;
+.cert-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 20px;
+  scroll-snap-type: none;
+  scrollbar-width: none;
 }
 
-.cert-card {
-    background: var(--secondary-color); /* MoonShell */
-    padding: 1rem;
-    border-radius: 12px;
-    color: #4D0135; /* Blackberry */
-    box-shadow: 0 2px 6px rgba(77, 1, 53, 0.15);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+.cert-scroll::-webkit-scrollbar {
+  display: none;
 }
 
-.cert-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(77, 1, 53, 0.25);
+.cert-item {
+  flex: 0 0 auto;
+  width: 260px;
+  height: 220px;
+  background: #fff;
+  border-radius: 12px;
+  scroll-snap-align: start;
+  box-shadow: var(--secondary-color);
+  text-align: center;
+  padding: 10px;
+  padding-left: 10px;
+  padding-right: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 4px solid var(--secondary-color);
+
+  /* CONTROL BORDER COLOR HERE */
+
 }
 
-.cert-year {
-    font-weight: 700;
-    font-size: 0.9rem;
-    display: block;
-    margin-bottom: 0.4rem;
+
+.cert-item img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 /* ====== SKILLS LAYOUT ====== */
@@ -1304,29 +1319,153 @@ body::before {
 .btn-primary:hover::after {
   transform: translateX(260%);
 }
+
+
 #reactive-bg {
   position: fixed;
   inset: 0;
-  z-index: -10;
-  pointer-events: none;
+  z-index: -2;
 }
 
 #particles {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 }
 
 .particle {
   position: absolute;
-  width: 12px;
-  height: 12px;
-  background: red; /* test */
-  animation: floatUp 12s linear infinite;
+  font-size: 17px; /* tiny */
+  color: #48182F; /* primary color */
+  opacity: 0.35; /* soft */
+  animation: floatUp 16s linear infinite;
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
 }
+
+
+
+
 
 @keyframes floatUp {
   from { transform: translateY(100vh); }
   to   { transform: translateY(-10vh); }
+}
+/* ===== CERTIFICATIONS SECTION ===== */
+
+#certifications {
+  width: 200vw !important;          /* full viewport width */
+  max-width: 100vw !important;      /* ensures no limit */
+  margin: 0 !important;             /* removes centering restriction */
+  padding-left: 20rem !important;   /* keep your left spacing */
+  padding-right: 20rem !important;  /* match right spacing */
+  box-sizing: border-box !important;
+}
+
+/* Scroll container */
+
+#certifications .cert-scroll {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  gap: 20px !important;
+}
+
+
+
+
+
+#certifications .cert-scroll::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Certificate box */
+#certifications .cert-item {
+  flex: 0 0 auto !important;
+  width: 360px !important;
+  height: 320px !important;
+
+  margin: 0 !important;
+  padding: 10px !important;
+  box-sizing: border-box !important;
+
+  /* FINAL BORDER CONTROL — CHANGE COLOR HERE */
+  border: 3px solid var(--secondary-color) !important;
+
+  background: linear-gradient(145deg, #ffffff, #f8f8f8) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+
+  transition: transform 0.8s ease, box-shadow 0.8s ease !important;
+}
+
+/* Hover effect */
+#certifications .cert-item:hover {
+  transform: translateY(-8px) scale(1.03) !important;
+}
+
+/* Certificate image */
+#certifications .cert-item img {
+  width: 100% !important;
+  height: 290px !important;
+  object-fit: contain !important;
+}
+
+/* Certificate title */
+.cert-title {
+  font-size: 15px !important;
+  font-weight: 550 !important;
+  color: #48182F !important;
+  margin-top: 8px !important;
+  letter-spacing: 0.3px !important;
+}
+
+/* Certifications section title */
+#certifications .section-title {
+  text-align: left !important;
+  margin-left: 300px !important;
+}
+
+#certifications .cert-scroll {
+  width: 50%;
+  max-width: 400px;          /* same as skills section */
+  margin: 0 auto !important;  /* centers horizontally */
+  padding-left: 2rem !important;  /* same as skills padding */
+  padding-right: 0rem !important;
+}
+
+#certifications .cert-item {
+  box-shadow: 0 0 20px rgba(72, 24, 47, 0.15);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+#certifications .cert-item:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 30px rgba(72, 24, 47, 0.25);
+}
+#certifications {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 0rem;
+}
+
+/* ===== AUTO SCROLL ONLY CERTIFICATES ===== */
+@keyframes certAutoScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* adjust based on total certificate width */
+  }
+}
+
+#certifications .cert-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden; /* keeps section still */
+  animation: certAutoScroll 30s linear infinite; /* speed control */
+  will-change: transform;
 }

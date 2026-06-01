@@ -30,13 +30,48 @@
 <nav class="navbar">
     <div class="nav-content center-nav">
         <ul class="nav-links">
-            <li><a href="#home" class="active">Home & About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#accomplishments">Accomplishments</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="nav-item">
+                <a href="#home" class="nav-link active">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="nav-label">Home & About </span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#education" class="nav-link">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span class="nav-label">Education</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#accomplishments" class="nav-link">
+                    <i class="fa-solid fa-award"></i>
+                    <span class="nav-label">Accomplishments</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#certifications" class="nav-link">
+                    <i class="fa-solid fa-ranking-star"></i>
+                    <span class="nav-label">Certificates</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#skills" class="nav-link">
+                    <i class="fa-solid fa-puzzle-piece"></i>
+                    <span class="nav-label">Skills</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#projects" class="nav-link">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span class="nav-label">Projects</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#contact" class="nav-link">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span class="nav-label">Contact</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -1069,6 +1104,27 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.querySelector('.navbar');
+    // This targets your name in the hero section
+    const heroName = document.querySelector('.hero h1'); 
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // When your name (entry) leaves the screen, show the bar
+            if (!entry.isIntersecting) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0 // Triggers immediately as the name is scrolled past
+    });
+
+    observer.observe(heroName);
+});
 
  
 </script>
